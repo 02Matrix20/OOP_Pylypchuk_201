@@ -6,16 +6,28 @@ class Operations{
     /* 28	Створіть метод, який приймає параметр int та конвертує його з десяткової
  у шістнадцятирічну систему обчислення та  повертає у вигляді String.*/
 
-    public static String num(int a){
-        String  hexstr = Integer.toHexString(a);
+   /* public  String num(int a) {
+        String hexstr = Integer.toHexString(a);
         return hexstr;
 
-    }
+    }*/
 
+    private  char[] digits = "0123456789abcdef".toCharArray();
+
+    public String toHex(int num) {
+        if (num == 0) return "0";
+
+        StringBuilder buffer = new StringBuilder();
+        while (num != 0) {
+            buffer.append(digits[num & 0xF]);
+            num = num >> 4;
+        }
+        return buffer.reverse().toString();
+    }
 
     /*17   Створіть метод, який приймає на вхід рядок та на виході змінює регістри букв на протилежні.
     Приклад - на вході "рУматРОн" на виході "РуМАТроН" */
-    public static String reverseStr(String str) {
+    public  String reverseStr(String str) {
         char[] charArray = str.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
             char c = charArray[i];
@@ -28,7 +40,7 @@ class Operations{
 
     /*1	Розробіть метод, який дозволяє знайти спільні елементи двох діапазонів цілих чисел, та вивести їх на екран.
     Приклад: діапазон з 5 до 11 та діапазон з 18 до 9. Спільні елементи - 9,10,11.*/
-    public static  List<Integer> findCommonElement(int[] arr1, int[] arr2) {
+    public  List<Integer> findCommonElement(int[] arr1, int[] arr2) {
 
         List<Integer> commonElements = new ArrayList<Integer>();
 
@@ -45,7 +57,7 @@ class Operations{
     }
 
     /*11	Створіть метод, який знаходить суму цифр будь якого числа int.*/
-    public static int sum(int n){
+    public  int sum(int n){
         int sum=0;
         while(n!=0){
             sum+=(n%10);
@@ -57,38 +69,23 @@ class Operations{
 
 }
 /* 13	 Створіть метод, який сортує будь який масив int[] методом вибору.*/
-class Sort{
-    private int []arr;
-    public Sort(int []arr){
-        this.arr =arr;
-    }
-    public  int[] selectionSort(){
+class SelectionSorter {
+    public  void sort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int pos = i;
+            int min = array[i];
 
-        int []sortArr = arr;
-
-        for (int i = 0; i < arr.length; i++) {
-
-            int min = arr[i];
-            int min_i = i;
-
-            for (int j = i+1; j < arr.length; j++) {
-
-                if (arr[j] < min) {
-                    min = arr[j];
-                    min_i = j;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < min) {
+                    pos = j;
+                    min = array[j];
                 }
             }
-
-            if (i != min_i) {
-                int tmp = arr[i];
-                arr[i] = arr[min_i];
-                arr[min_i] = tmp;
-            }
+            array[pos] = array[i];
+            array[i] = min;
         }
-        return sortArr;
     }
 }
-
 public class Main {
 
     public static void main(String[] args) {
@@ -97,14 +94,16 @@ public class Main {
         int a;
         Scanner scan = new Scanner(System.in);
         a=scan.nextInt();
-        System.out.println(Operations.num(a));
+        Operations operation = new Operations();
+        // System.out.println(operation.num(a));
+        System.out.println(operation.toHex(a));
 
         System.out.println("*-------------------17--------------------*");
         System.out.println("Enter text and press the ENTER key:");
         String s;
         Scanner scan1 = new Scanner(System.in);
         s=scan1.nextLine();
-        System.out.println(Operations.reverseStr(s));
+        System.out.println(operation.reverseStr(s));
 
         System.out.println();
 
@@ -115,8 +114,8 @@ public class Main {
             System.out.print(arr[i]+" ");
         }
 
-        Sort sort = new Sort(arr);
-        arr = sort.selectionSort();
+        SelectionSorter selectionSort = new SelectionSorter();
+        selectionSort.sort(arr);
 
         System.out.println();
         System.out.println();
@@ -134,7 +133,7 @@ public class Main {
 
         int arr1[] = { 5,6,7,8,9,10,11,55 };
         int arr2[] = { 18,17,16,15,14,13,12,11,10,9 };
-        System.out.println(Operations.findCommonElement(arr1, arr2));
+        System.out.println(operation.findCommonElement(arr1, arr2));
 
 
 
@@ -143,7 +142,7 @@ public class Main {
         int b;
         Scanner scan2 = new Scanner(System.in);
         b=scan2.nextInt();
-        System.out.println("Sum of digit:"+ Operations.sum(b));
+        System.out.println("Sum of digit:"+ operation.sum(b));
     }
 
 
