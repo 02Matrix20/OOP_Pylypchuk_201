@@ -14,11 +14,11 @@ public class FishermansParty {
         fishTypes.add(new Pike());
         fishTypes.add(new Zander());
 
-        fishermen.add(new Fisherman("Lesha"));
         fishermen.add(new Fisherman("Anton"));
-        fishermen.add(new Fisherman("Alex"));
-
-
+        fishermen.add(new Fisherman("Lesha"));
+        fishermen.add(new Fisherman("Sasha"));
+        fishermen.add(new Fisherman("Sergey"));
+        fishermen.add(new Fisherman("Artem"));
     }
     public void Competitions(){
         Fisherman theBestFisherman;

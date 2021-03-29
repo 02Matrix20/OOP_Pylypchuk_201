@@ -12,7 +12,7 @@ public class Fisherman {
 
     public Fisherman(String name) {
         this.name = name;
-        for (int i = 0; i < 1000; i ++){
+        for (int i = 0; i < 50; i ++){
             fishing();
         }
     }
@@ -20,13 +20,13 @@ public class Fisherman {
     public void fishing(){
         Random random = new Random();
         if(!random.nextBoolean()){
-            System.out.println("Nothing :(");
+            System.out.println("Nothing !!");
             return;
         }
         int fishNum = random.nextInt(FishermansParty.fishTypes.size());
 
         Fish newFish = new Fish(
-                random.nextInt(100),
+                random.nextInt(40),
                 FishermansParty.fishTypes.get(fishNum).getClass().getName(),
                 FishermansParty.fishTypes.get(fishNum));
 
