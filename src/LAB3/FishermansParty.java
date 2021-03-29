@@ -16,12 +16,11 @@ public class FishermansParty {
 
         fishermen.add(new Fisherman("Lesha"));
         fishermen.add(new Fisherman("Anton"));
-        fishermen.add(new Fisherman("Gay007"));
+        fishermen.add(new Fisherman("Alex"));
 
 
     }
-
-    public void makeCompetition(){
+    public void Competitions(){
         Fisherman theBestFisherman;
         Fish theBiggestFish;
         for (var fishType: fishTypes){
@@ -42,4 +41,3 @@ public class FishermansParty {
         }
     }
 }
-

@@ -13,11 +13,11 @@ public class Fisherman {
     public Fisherman(String name) {
         this.name = name;
         for (int i = 0; i < 1000; i ++){
-            throwWormIntoTheSea();
+            fishing();
         }
     }
 
-    public void throwWormIntoTheSea(){
+    public void fishing(){
         Random random = new Random();
         if(!random.nextBoolean()){
             System.out.println("Nothing :(");
