@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FishermansParty {
-    static List<FishType> fishTypes = new ArrayList<FishType>();
-    List<Fisherman> fishermen = new ArrayList<>();
+    public static List<FishType> fishTypes = new ArrayList<FishType>();
+    public static List<Fisherman> fishermen = new ArrayList<>();
 
     public FishermansParty() {
         fishTypes.add(new Pike());

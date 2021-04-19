@@ -13,14 +13,15 @@ public class Fisherman {
     public Fisherman(String name) {
         this.name = name;
         for (int i = 0; i < 50; i ++){
-            fishing();
+            throwWorm();
+
         }
     }
 
-    public void fishing(){
+    public void throwWorm(){
         Random random = new Random();
         if(!random.nextBoolean()){
-            System.out.println("Nothing !!");
+            System.out.println("Nothing!");
             return;
         }
         int fishNum = random.nextInt(FishermansParty.fishTypes.size());
