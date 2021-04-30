@@ -1,20 +1,18 @@
 package LAB3;
-import LAB3.FishTypes.FishType;
-
 import java.util.Date;
 
 public class Fish {
-    double weigth;
+    double weight;
     FishType fishType;
-    Date date;
+    long date;
 
     public Fish() {
-        weigth = 0;
+        weight = 0;
     }
 
-    public Fish(double weigth, String name, FishType fishType) {
-        this.weigth = weigth;
+    public Fish(double weight, FishType fishType) {
+        this.weight = weight;
         this.fishType = fishType;
-        date = new Date();
+        date = new Date().getTime();
     }
 }

@@ -1,4 +1,5 @@
 package LAB3;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -6,9 +7,6 @@ import java.util.Random;
 public class Fisherman {
     List<Fish> fish = new ArrayList<>();
     String name;
-
-    public Fisherman(){
-    }
 
     public Fisherman(String name) {
         this.name = name;
@@ -28,9 +26,9 @@ public class Fisherman {
 
         Fish newFish = new Fish(
                 random.nextInt(40),
-                FishermansParty.fishTypes.get(fishNum).getClass().getName(),
-                FishermansParty.fishTypes.get(fishNum));
+                FishermansParty.fishTypes.stream().toList().get(fishNum));
 
         fish.add(newFish);
     }
+
 }

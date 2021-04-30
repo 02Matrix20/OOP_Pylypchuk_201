@@ -1,18 +1,14 @@
 package LAB3;
-import LAB3.FishTypes.FishType;
-import LAB3.FishTypes.Pike;
-import LAB3.FishTypes.Zander;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class FishermansParty {
-    public static List<FishType> fishTypes = new ArrayList<FishType>();
+    public static Set<FishType> fishTypes = new HashSet<>();
     public static List<Fisherman> fishermen = new ArrayList<>();
 
     public FishermansParty() {
-        fishTypes.add(new Pike());
-        fishTypes.add(new Zander());
+        fishTypes.addAll(Arrays.stream(FishType.values()).toList());
 
         fishermen.add(new Fisherman("Anton"));
         fishermen.add(new Fisherman("Lesha"));
@@ -20,24 +16,26 @@ public class FishermansParty {
         fishermen.add(new Fisherman("Sergey"));
         fishermen.add(new Fisherman("Artem"));
     }
-    public void Competitions(){
-        Fisherman theBestFisherman;
-        Fish theBiggestFish;
+    public void Competitions(long begin, long end){
         for (var fishType: fishTypes){
-            theBiggestFish = new Fish();
-            theBiggestFish.fishType = fishType;
-            theBestFisherman = null;
+            Fish theBiggestFish = new Fish();
+            Fisherman theBestFisherman = null;
             for (var fisher: fishermen) {
                 for (var fish : fisher.fish){
-                    if(fish.fishType.getClass().getName().equals(fishType.getClass().getName()) && theBiggestFish.weigth < fish.weigth){
+                    if(fish.fishType.equals(fishType) && theBiggestFish.weight < fish.weight &&  fish.date > begin && fish.date < end ){
                         theBiggestFish = fish;
                         theBestFisherman = fisher;
                     }
                 }
             }
             if(theBestFisherman != null)
-                System.out.println(theBestFisherman.name + " catch the " + fishType.getClass().getName() + " " + theBiggestFish.weigth );
+                System.out.println(theBestFisherman.name + " catch the " + fishType + " " + theBiggestFish.weight );
 
+            String beginDateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(begin));
+            System.out.println(" Fishing start time: " + beginDateString);
+
+            String endDateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(end));
+            System.out.println(" Fishing end time: " + endDateString);
         }
     }
 }
