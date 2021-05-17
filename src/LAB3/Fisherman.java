@@ -1,6 +1,7 @@
 package LAB3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -19,15 +20,13 @@ public class Fisherman {
     public void throwWorm(){
         Random random = new Random();
         if(!random.nextBoolean()){
-            System.out.println("Nothing!");
             return;
         }
-        int fishNum = random.nextInt(FishermansParty.fishTypes.size());
+        int fishNum = random.nextInt(FishType.values().length);
 
         Fish newFish = new Fish(
                 random.nextInt(40),
-                FishermansParty.fishTypes.stream().toList().get(fishNum));
-
+                Arrays.stream(FishType.values()).toList().get(fishNum));
         fish.add(newFish);
     }
 
